@@ -16,5 +16,8 @@
     "url": "https://github.com/somrathumayan/express-crash-course/issues"
   },
   "homepage": "https://github.com/somrathumayan/express-crash-course#readme",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
 }
