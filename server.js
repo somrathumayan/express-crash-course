@@ -1,10 +1,28 @@
 const express = require("express");
 const path = require("path");
+const port = process.env.PORT || 8000;
 
 const app = express();
 
 // setup static folder 
-app.use(express.static(path.join(__dirname, 'public')))
+/* app.use(express.static(path.join(__dirname, 'public'))) */
+
+let posts = [
+    {id: 1, title: "Post One"},
+    {id: 2, title: "Post Two"},
+    {id: 3, title: "Post Three"},
+];
+// get all posts 
+app.get("/api/posts", (req, res) => {
+    res.json(posts);
+})
+
+// get single posts 
+app.get("/api/posts/:id", (req, res) => {
+    const id = parseInt(req.params.id);
+    res.json(posts.filter((post) => post.id === id));
+})
+
 
 /*
 
@@ -17,4 +35,4 @@ app.get('/about', (req, res) => {
     
 */
 
-app.listen(8000, () => console.log(`Server is running`));
+app.listen(port, () => console.log(`Server is running ${port}`));
